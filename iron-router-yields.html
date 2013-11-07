@@ -1,0 +1,20 @@
+<head>
+  <title>iron-router-yields</title>
+</head>
+
+<body>
+</body>
+
+<template name="layout">
+  <h1>Hello World!</h1>
+  {{yield 'partialYield'}}
+  {{yield}}
+</template>
+
+<template name="mainTemplate">
+  main: {{name}}
+</template>
+
+<template name="partialContent">
+  partial: {{name}}
+</template>
