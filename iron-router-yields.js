@@ -8,12 +8,9 @@ Router.map(function() {
 
     template: 'mainTemplate',
 
-    yieldTemplates: {
-      partialContent : {to: 'partialYield'},
-    },
-
     before: function() {
       this.setData({name: 'Foo Fighter'});
+      //this.getData();  // Uncomment to trigger infinite loop.
     },
   });
 
@@ -22,12 +19,10 @@ Router.map(function() {
 
     template: 'mainTemplate',
 
-    yieldTemplates: {
-      partialContent : {to: 'partialYield'},
-    },
-
     before: function() {
-      this.setData({name: 'Bar Fighter'});
+      var data = this.getData();
+      data.name = 'Bar Fighter';
+      //this.setData({name: 'Bar Fighter'}); //Uncomment to trigger infinite loop.
     }
   });
 
@@ -35,10 +30,6 @@ Router.map(function() {
     path : '/data-function/home',
 
     template: 'mainTemplate',
-
-    yieldTemplates: {
-      partialContent : {to: 'partialYield'},
-    },
 
     data: function() {
       return {
@@ -51,10 +42,6 @@ Router.map(function() {
     path : '/data-function/away',
 
     template: 'mainTemplate',
-
-    yieldTemplates: {
-      partialContent : {to: 'partialYield'},
-    },
 
     data: function() {
       return {
@@ -70,5 +57,4 @@ if (Meteor.isClient) {
   }
 
   Template.layout.rendered = logData;
-  Template.partialContent.rendered = logData;
 }
